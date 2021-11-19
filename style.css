@@ -99,7 +99,6 @@ textarea {
 
 #imgUpload:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 5px var(--formShadow);
 }
 
 input[type="file"] {
