@@ -1,0 +1,176 @@
+:root {
+  /* variables */
+  --formGreen: rgb(0, 206, 120);
+  --formShadow: rgba(255, 255, 255, 0.25);
+}
+
+body {
+  background: rgb(3, 42, 54);
+  background: linear-gradient(
+    0deg,
+    rgba(3, 42, 54, 1) 0%,
+    rgba(0, 30, 38, 1) 100%
+  );
+  overflow: hidden;
+  color: var(--formGreen);
+  font-family: sans-serif;
+  font-size: 16px;
+  
+}
+
+header {
+  padding-left: 20px; 
+  font-weight: lighter;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+}
+
+span {
+  color: rgb(224, 222, 222);
+}
+
+h2 {
+  text-align: center;
+  font-size: 26px;
+}
+
+.block {
+  padding-top: 4%;
+  align-items: center;
+}
+
+.half-width {
+  width: 50vw;
+}
+
+@media screen and (max-width: 900px) {
+    .half-width {
+       width: 80vw;
+    }
+
+    header {
+        padding: unset;
+        text-align: center
+    }
+ }
+
+ @media screen and (max-width: 600px) {
+    .half-width {
+       width: 90vw;
+    }
+    header {
+        padding: unset;
+        text-align: center
+    }
+    body {
+        overflow: scroll;
+    }
+ }
+
+
+input,
+textarea {
+  width: -webkit-fill-available;
+  background: none;
+  color: whitesmoke;
+  text-align: start;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 16px;
+  padding: 5px;
+}
+
+#imgUpload {
+  width: 4rem;
+  border: none;
+  background-color: transparent;
+  color: whitesmoke;
+  padding: 0 10px 15px 0;
+  justify-content: space-between;
+}
+
+#imgUpload:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px var(--formShadow);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(135, 139, 134);
+  font-style: italic;
+  font-size: 16px;
+}
+
+.input-container {
+  width: 100%;
+  border: 1px solid var(--formGreen);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px var(--formShadow);
+}
+
+.headshot-container {
+  display: flex;
+  width: auto;
+  align-self: start;
+  height: 30px;
+  border: 1px solid var(--formGreen);
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px var(--formShadow);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  align-self: flex-start;
+  padding-bottom: 1%;
+  font-size: 18px;
+  margin-left: -15px;
+  font-style: bold;
+  color: whitesmoke;
+}
+
+p {
+  align-self: flex-start;
+  padding-bottom: 1%;
+  color: rgb(135, 139, 134);
+  font-size: small;
+}
+
+#bio {
+  height: 250px;
+  text-align: start;
+}
+
+#submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 2px 2px 5px #00db12c7;
+}
+
+#submit-btn {
+  margin-top: 15px;
+  cursor: pointer;
+  height: 2rem;
+  width: 6rem;
+  background: none;
+  color: rgb(0, 206, 120);
+  font-size: 18px;
+  border: 1px solid var(--formGreen);
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px var(--formShadow);
+}

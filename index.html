@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>NWA Coders - Guest Speaker Form</title>
+  </head>
+  <body>
+    <header>
+      <h1>NWA C<span>oders</span></h1>
+      <h2>G<span>uest</span> S<span>peaker</span> F<span>orm:</span></h2>
+    </header>
+    <form action="" method="post">
+      <div class="half-width">
+        <div class="block flex-col">
+          <label for="firstName">First Name:</label>
+          <div class="input-container">
+            <input
+              class="guestInput"
+              type="text"
+              placeholder="First Name"
+              id="firstName"
+              name="firstName"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="block flex-col">
+          <label for="lastName"> Last Name: </label>
+          <div class="input-container">
+            <input
+              class="guestInput"
+              type="text"
+              placeholder="Last Name"
+              id="lastName"
+              name="lastName"
+            />
+          </div>
+        </div>
+
+        <div class="block flex-col">
+          <label lass="guestInput" id="headshotLabel" for="headshot"> Prefered Photo: </label>
+          <div class="headshot-container">
+            <img onClick="uploadPhoto()" id="imgUpload" width="30" height="30" src="./img/upload-solid.svg" alt="file upload button" />
+            <p>.png OR .jpg</p>
+            <input
+              #upload
+              id="headshot"
+              class="guestInput"
+              type="file"
+              placeholder="Name"
+              required
+              min="50"
+              accept="image/png, image/jpeg"
+            />
+          </div>
+        </div>
+
+        <div class="block flex-col">
+          <label for="talkTilte" class="talk-title">
+            Talk's Title:
+          </label>
+          <div class="input-container">
+            <input
+              class="guestInput"
+              type="text"
+              id="talkTitle"
+              name="talkTitle"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="block flex-col">
+          <label for="bio" class="bio"> About Me: </label>
+          <div class="input-container">
+            <textarea
+              class="guestInput"
+              id="bio"
+              type="text"
+              name="bio"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <button id="submit-btn" onClick="submitForm()">Submit</button>
+    </form>
+    <script src="main.js"></script>
+  </body>
+</html>
