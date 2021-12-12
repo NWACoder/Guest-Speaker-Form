@@ -11,6 +11,7 @@ let speakerObject = {
 	}
 }
 
+const endpoint = process.env.endpoint
 const form = document.querySelector('form');
 const message = document.getElementById('message');
 const urlParams = new URLSearchParams(window.location.search.substr(1));
@@ -26,16 +27,12 @@ form.addEventListener('submit', (e) => {
  	speakerObject.properties.Bio.rich_text[0].text.content = oData.get("bio");
  	speakerObject.properties.Email.rich_text[0].text.content = oData.get("Email");
  	speakerObject.properties.Role.rich_text[0].text.content = oData.get("Role");
- 	// Set url for dev http://localhost:3000/guest-speaker-form?token=abc
- 	// Set url for prod https://api.nwacoders.com/guest-speaker-form?token=abc
- 	axios.post(`http://localhost:3000/guest-speaker-form?token=${urlParams.get('token')}`, speakerObject)
+ 	axios.post(`${endpoint}?token=${urlParams.get('token')}`, speakerObject)
 	.then(function (response) {
 		message.innerHTML = "submission sent"
-		// console.log(response);
 	})
 	.catch(function (error) {
 		message.innerHTML = "Error please try again"
-		// console.log(error);
 	});
 
 });
