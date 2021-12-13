@@ -10,7 +10,7 @@ module.exports = env => {
       	watch: true
       },
       compress: true,
-      port: 3000
+      port: 3001
     },
     output: {
       filename: 'main.js',
