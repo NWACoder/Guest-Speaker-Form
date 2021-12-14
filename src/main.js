@@ -15,6 +15,7 @@ const endpoint = process.env.endpoint
 const form = document.querySelector('form');
 const message = document.getElementById('message');
 const urlParams = new URLSearchParams(window.location.search.substr(1));
+const uploadPhoto = document.getElementById('imgUpload');
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -38,9 +39,9 @@ form.addEventListener('submit', (e) => {
 
 });
 
-function uploadPhoto() {
-	document.getElementById("headshot").click();
-}
+uploadPhoto.addEventListener('click', function(event) {
+  document.getElementById("headshot").click();
+});
 
 function encodeImageFileAsURL() {
 	var filesSelected = document.getElementById("headshot").files;
