@@ -15,20 +15,28 @@ const endpoint = process.env.endpoint
 const form = document.querySelector('form');
 const message = document.getElementById('message');
 const urlParams = new URLSearchParams(window.location.search.substr(1));
-const uploadPhoto = document.getElementById('imgUpload');
+// const uploadPhoto = document.getElementById('uploadCircle');
+// const headshot = document.getElementById("headshot")
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	oData = new FormData(form);
-
-	speakerObject.properties.Name.title[0].text.content = `${oData.get("firstName")} ${oData.get("lastName")}`
-	speakerObject.properties.Topic.rich_text[0].text.content = oData.get("talkTitle")
-	speakerObject.properties.Slug.rich_text[0].text.content = oData.get("talkTitle").replace(/\s/g, "-");
-	speakerObject.properties.Bio.rich_text[0].text.content = oData.get("bio");
-	speakerObject.properties.Email.rich_text[0].text.content = oData.get("Email");
-	speakerObject.properties.Role.rich_text[0].text.content = oData.get("Role");
 	//ToDo: resolve sumbitting the image
+	speakerObject.properties.Name.title[0].text.content = oData.get("fullName");
+	speakerObject.properties.Email.rich_text[0].text.content = oData.get("email");
+	speakerObject.properties.Role.rich_text[0].text.content = oData.get("role");
+
+	// will need to create these fields within notion
+	// speakerObject.properties.TwitterUrl.rich_text[0].text.content = oData.get("twitter");
+	// speakerObject.properties.LinkedInUrl.rich_text[0].text.content = oData.get("linkedIn");
+	// speakerObject.properties.PersonalSiteUrl.rich_text[0].text.content = oData.get("personalSite");
+
+
+	speakerObject.properties.Topic.rich_text[0].text.content = oData.get("talkTitle").replace(/\s/g, "-");
+	// speakerObject.properties.Slug.rich_text[0].text.content = oData.get("talkTitle")
+	speakerObject.properties.Bio.rich_text[0].text.content = oData.get("bio");
+
 	axios.post(`${endpoint}?token=${urlParams.get('token')}`, speakerObject)
 		.then(function (response) {
 			message.innerHTML = "submission sent"
@@ -39,9 +47,30 @@ form.addEventListener('submit', (e) => {
 
 });
 
-uploadPhoto.addEventListener('click', function(event) {
-  document.getElementById("headshot").click();
-});
+function uploadPhoto() {
+	document.getElementById("headshot").click();
+};
+
+function removeImg() {
+	//grab element and remove inner element(the preview image)
+	const uploadCircle = document.getElementById("uploadCircle");
+	document.getElementsByClassName('preview-img')[0].remove();
+	//recreate all of the elements and attributes that were there on load
+	let newPElem = document.createElement('p');
+	newPElem.innerHTML = "Upload";
+	let newInputElem = document.createElement('input');
+	newInputElem.setAttribute('id', 'headshot');
+	newInputElem.setAttribute('type', 'file');
+	newInputElem.setAttribute('accept', "image/png, image/jpeg");
+	newInputElem.setAttribute('name', 'headshot')
+	newInputElem.setAttribute('onchange', 'encodeImageFileAsURL()')
+	uploadCircle.innerHTML = newPElem.outerHTML + newInputElem.outerHTML;
+	document.getElementById('removeText').innerHTML = "";
+}
+
+document.getElementsByClassName('preview-img')[0].addEventListener('click', () => {
+	document.getElementById("headshot").click();
+})
 
 function encodeImageFileAsURL() {
 	var filesSelected = document.getElementById("headshot").files;
@@ -54,12 +83,15 @@ function encodeImageFileAsURL() {
 
 			var newImage = document.createElement('img');
 			newImage.src = srcData;
-			newImage.classList.add('previewImg');
+			newImage.classList.add('preview-img');
 
-			const previewWrapper = document.getElementById("previewWrapper");
-			previewWrapper.innerHTML = newImage.outerHTML;
+			const uploadCircle = document.getElementById("uploadCircle");
+			uploadCircle.innerHTML = newImage.outerHTML;
 		}
 		fileReader.readAsDataURL(fileToLoad);
+		document.getElementById('removeText').innerHTML = "Remove";
+	} else {
+		document.getElementById("headshot").click();
 	}
 }
 

@@ -1,79 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./style.css" />
-		<title>NWA Coders - Guest Speaker Form</title>
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img
+        id="logo"
+        src="./img/NWACoderLogo.png"
+        alt="Northwest Arkansas Coders Logo"
+      />
+    </header>
 
-	    <header>
-			<h1>NWA C<span>oders</span></h1>
-			<h2>G<span>uest</span> S<span>peaker</span> F<span>orm:</span></h2>
-	    </header>
+    <div class="main-container">
+      <h1>W<span>elcome Guest Speaker</span></h1>
+      <form action="post">
+        <div class="upload-container">
+          <div class="upload-circle" id="uploadCircle" onclick="uploadPhoto()">
+            <p>Upload</p>
+            <input
+              id="headshot"
+              type="file"
+              name="headshot"
+              accept="image/png, image/jpeg"
+              onchange="encodeImageFileAsURL()"
+            />
+          </div>
+          <h6 id="removeText" onclick="removeImg()"></h6>
+        </div>
 
-		<form method="post" name="guestSpeaker">
+        <div class="inner-container">
+          <div class="section-one">
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              min="2"
+              max="30"
+              class="guest-input"
+              placeholder="Full Name"
+              autocomplete="off"
+            />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              max="50"
+              class="guest-input"
+              placeholder="Email"
+              autocomplete="off"
+            />
+            <input
+              id="role"
+              name="role"
+              type="text"
+              max="50"
+              class="guest-input"
+              placeholder="Role"
+              autocomplete="off"
+            />
+            <h4>Links</h4>
+            <input
+              id="twitter"
+              name="twitter"
+              type="text"
+              max="100"
+              class="guest-input"
+              placeholder="Twitter"
+              autocomplete="off"
+            />
+            <input
+              id="linkedin"
+              name="linkedIn"
+              type="text"
+              max="100"
+              class="guest-input"
+              placeholder="LinkedIn"
+              autocomplete="off"
+            />
+            <input
+              id="personalSite"
+              name="personalSite"
+              type="text"
+              max="100"
+              class="guest-input"
+              placeholder="Peronal Site"
+              autocomplete="off"
+            />
+          </div>
+          <div class="section-two">
+            <input
+              id="talkTitle"
+              name="talkTitle"
+              type="text"
+              max="50"
+              class="guest-input"
+              placeholder="Talk's Tiltle"
+              autocomplete="off"
+            />
+            <textarea
+              id="bio"
+              name="bio"
+              class="guest-input"
+              type="text"
+              placeholder="About Me"
+              max="2000"
+              autocomplete="off"
+            ></textarea>
+            <button id="submit" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
 
-			<div class="half-width">
-				<div class="block flex-col">
-					<label for="firstName">First Name:</label>
-					<div class="input-container">
-						<input class="guestInput"type="text"placeholder="First Name"id="firstName"name="firstName"required/>
-					</div>
-				</div>
-
-				<div class="block flex-col">
-					<label for="lastName"> Last Name: </label>
-					<div class="input-container">
-						<input class="guestInput" type="text" placeholder="Last Name" id="lastName" name="lastName" />
-					</div>
-				</div>
-
-				<div class="block flex-col">
-					<label for="Email">Email:</label>
-					<div class="input-container">
-						<input class="guestInput" type="text" placeholder="Email" id="Email" name="Email" required/>
-					</div>
-				</div>
-
-				<div class="block flex-col">
-					<label for="role">Role:</label>
-					<div class="input-container">
-						<input class="guestInput" type="text" placeholder="Role" id="role" name="role" required/>
-					</div>
-				</div>
-
-				<div class="block flex-col">
-					<label lass="guestInput" id="headshotLabel" for="headshot"> Prefered Photo: </label>
-					<div class="headshot-container">
-						<img id="imgUpload" width="30" height="30" src="./img/upload-solid.svg" alt="file upload button" />
-						<p>.png OR .jpg</p>
-						<input #upload id="headshot" class="guestInput" type="file" placeholder="Name" min="50" accept="image/png, image/jpeg" />
-					</div>
-				</div>
-
-				<div class="block flex-col">
-					<label for="talkTilte" class="talk-title">Talk's Title:</label>
-					<div class="input-container">
-						<input class="guestInput" type="text" id="talkTitle" name="talkTitle" autocomplete="off"/>
-					</div>
-				</div>
-
-				<div class="block flex-col">
-					<label for="bio" class="bio"> About Me: </label>
-					<div class="input-container">
-						<textarea class="guestInput" id="bio" type="text" name="bio"></textarea>
-					</div>
-				</div>
-
-			</div>
-			<div id="message"></div>
-			<button id="submit-btn">Submit</button>
-		</form>
-
-	</body>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
+  </body>
 </html>
