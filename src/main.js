@@ -1,3 +1,5 @@
+import profile from "./profile";
+
 let speakerObject = {
 	"parent": { "database_id": "815035805b6d4a53ab7a74c81ee7fa0b" },
 	"properties": {
@@ -15,8 +17,6 @@ const endpoint = process.env.endpoint
 const form = document.querySelector('form');
 const message = document.getElementById('message');
 const urlParams = new URLSearchParams(window.location.search.substr(1));
-// const uploadPhoto = document.getElementById('uploadCircle');
-// const headshot = document.getElementById("headshot")
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -32,7 +32,6 @@ form.addEventListener('submit', (e) => {
 	// speakerObject.properties.LinkedInUrl.rich_text[0].text.content = oData.get("linkedIn");
 	// speakerObject.properties.PersonalSiteUrl.rich_text[0].text.content = oData.get("personalSite");
 
-
 	speakerObject.properties.Topic.rich_text[0].text.content = oData.get("talkTitle").replace(/\s/g, "-");
 	// speakerObject.properties.Slug.rich_text[0].text.content = oData.get("talkTitle")
 	speakerObject.properties.Bio.rich_text[0].text.content = oData.get("bio");
@@ -47,69 +46,4 @@ form.addEventListener('submit', (e) => {
 
 });
 
-// function uploadPhoto() {
-// 	document.getElementById("headshot").click();
-// };
-document.getElementById("uploadCircle").addEventListener("click", () => {
-	document.getElementById("headshot").click();
-})
-
-document.getElementById("headshot").addEventListener("change", () => {
-	encodeImageFileAsURL();
-})
-
-document.getElementById('removeText').addEventListener("click", () => {
-	removeImg();
-})
-
-function removeImg() {
-	//grab element and remove inner element(the preview image)
-	const uploadCircle = document.getElementById("uploadCircle");
-
-	document.getElementById('previewImg').remove();
-	//recreate all of the elements and attributes that were there on load
-	let newPElem = document.createElement('p');
-	newPElem.innerHTML = "Upload";
-	let newInputElem = document.createElement('input');
-	newInputElem.setAttribute('id', 'headshot');
-	newInputElem.setAttribute('type', 'file');
-	newInputElem.setAttribute('accept', "image/png, image/jpeg");
-	newInputElem.setAttribute('name', 'headshot')
-	newInputElem.setAttribute('onchange', 'encodeImageFileAsURL()')
-	uploadCircle.innerHTML = newPElem.outerHTML + newInputElem.outerHTML;
-	document.getElementById('removeText').innerHTML = "";
-}
-
-
-
-function encodeImageFileAsURL() {
-	var filesSelected = document.getElementById("headshot").files;
-	if (filesSelected.length > 0) {
-		var fileToLoad = filesSelected[0]; //delete
-		var fileReader = new FileReader();
-
-		fileReader.onload = function (fileLoadedEvent) {
-			var srcData = fileLoadedEvent.target.result; // <--- data: base64
-
-			var newImage = document.createElement('img');
-			newImage.src = srcData;
-			newImage.setAttribute('id', 'previewImg');
-
-			const uploadCircle = document.getElementById("uploadCircle");
-			uploadCircle.innerHTML = newImage.outerHTML;
-		}
-		fileReader.readAsDataURL(fileToLoad);
-		document.getElementById('removeText').innerHTML = "Remove";
-		console.log(document.getElementById("previewImg"))
-		setTimeout(() => {
-			document.getElementById("previewImg").addEventListener('click', () => {
-				document.getElementById("headshot").click();
-			})
-		}, 0)
-
-	} else {
-		document.getElementById("headshot").click();
-	}
-}
-window.encodeImageFileAsURL = encodeImageFileAsURL();
-
+profile();
