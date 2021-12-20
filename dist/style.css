@@ -85,7 +85,7 @@ span {
   font-weight: 500;
 }
 
-.preview-img {
+#previewImg {
   height: 10vh;
   width: auto;
 }

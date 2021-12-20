@@ -20,17 +20,17 @@
       <h1>W<span>elcome Guest Speaker</span></h1>
       <form action="post">
         <div class="upload-container">
-          <div class="upload-circle" id="uploadCircle" onclick="uploadPhoto()">
+          <div class="upload-circle" id="uploadCircle" >
             <p>Upload</p>
             <input
               id="headshot"
               type="file"
               name="headshot"
               accept="image/png, image/jpeg"
-              onchange="encodeImageFileAsURL()"
+              
             />
           </div>
-          <h6 id="removeText" onclick="removeImg()"></h6>
+          <h6 id="removeText"></h6>
         </div>
 
         <div class="inner-container">

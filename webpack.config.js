@@ -6,8 +6,8 @@ module.exports = env => {
     entry: './src/main.js',
     devServer: {
       static: {
-      	directory: path.join(__dirname, 'dist'),
-      	watch: true
+        directory: path.join(__dirname, 'dist'),
+        watch: true
       },
       compress: true,
       port: 3001
@@ -18,8 +18,8 @@ module.exports = env => {
     },
     plugins: [
       new Dotenv({
-        path: './.env', 
-        safe: true ,
+        path: './.env',
+        safe: true,
         systemvars: true,
       })
     ]

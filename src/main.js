@@ -47,14 +47,26 @@ form.addEventListener('submit', (e) => {
 
 });
 
-function uploadPhoto() {
+// function uploadPhoto() {
+// 	document.getElementById("headshot").click();
+// };
+document.getElementById("uploadCircle").addEventListener("click", () => {
 	document.getElementById("headshot").click();
-};
+})
+
+document.getElementById("headshot").addEventListener("change", () => {
+	encodeImageFileAsURL();
+})
+
+document.getElementById('removeText').addEventListener("click", () => {
+	removeImg();
+})
 
 function removeImg() {
 	//grab element and remove inner element(the preview image)
 	const uploadCircle = document.getElementById("uploadCircle");
-	document.getElementsByClassName('preview-img')[0].remove();
+
+	document.getElementById('previewImg').remove();
 	//recreate all of the elements and attributes that were there on load
 	let newPElem = document.createElement('p');
 	newPElem.innerHTML = "Upload";
@@ -68,9 +80,7 @@ function removeImg() {
 	document.getElementById('removeText').innerHTML = "";
 }
 
-document.getElementsByClassName('preview-img')[0].addEventListener('click', () => {
-	document.getElementById("headshot").click();
-})
+
 
 function encodeImageFileAsURL() {
 	var filesSelected = document.getElementById("headshot").files;
@@ -83,15 +93,23 @@ function encodeImageFileAsURL() {
 
 			var newImage = document.createElement('img');
 			newImage.src = srcData;
-			newImage.classList.add('preview-img');
+			newImage.setAttribute('id', 'previewImg');
 
 			const uploadCircle = document.getElementById("uploadCircle");
 			uploadCircle.innerHTML = newImage.outerHTML;
 		}
 		fileReader.readAsDataURL(fileToLoad);
 		document.getElementById('removeText').innerHTML = "Remove";
+		console.log(document.getElementById("previewImg"))
+		setTimeout(() => {
+			document.getElementById("previewImg").addEventListener('click', () => {
+				document.getElementById("headshot").click();
+			})
+		}, 0)
+
 	} else {
 		document.getElementById("headshot").click();
 	}
 }
+window.encodeImageFileAsURL = encodeImageFileAsURL();
 
