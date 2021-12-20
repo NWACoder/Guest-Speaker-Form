@@ -16,7 +16,7 @@ export default ()=>{
 
 	removeImg.addEventListener('click', (event) =>{
 		imgInput.value = null
-  		profilePreview.src = "";
+  		profilePreview.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
   		removeImg.innerHTML = "";
 	});
 }

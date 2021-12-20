@@ -72,6 +72,16 @@ span {
   overflow: hidden;
 }
 
+#profilePreview {
+  border-radius: 50%;
+  height: 10vh;
+  width: 10vh;
+  position: relative;
+  margin: auto;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
 .upload-circle:hover{
   cursor: pointer;
 }
